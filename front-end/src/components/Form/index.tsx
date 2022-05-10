@@ -19,7 +19,12 @@ function Form() {
 
   const handleFormSubmit = (event: any) => {
     event.preventDefault();
-      axios.get(`http://localhost:4000/v1/vehicles/${vinNumber}`)
+      axios.get(`http://localhost:4000/v1/vehicles/${vinNumber}`, {
+          headers: {
+              "Content-Type" : "application/json",
+              "Authorization" : "Basic YWJjOjEyMw=="
+          }
+      })
           .then(res => {
               const vehicle = res.data.vehicle;
               setVehicleValues(vehicle);
